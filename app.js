@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
-app.get('/',function(req, res) {
-res.send('Hello World')
-})
-
-app.listen(8080, function() {
+const db = require('./db.js');
+const server = app.listen(8080, function() {
   console.log('Server ready');
 })
+
+app.get('/',function(req, res) {
+res.json({'staus': 'ready'})
+})
+
