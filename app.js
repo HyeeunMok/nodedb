@@ -5,6 +5,20 @@ const server = app.listen(8080, function() {
   console.log('Server ready');
 })
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true
+}));
+
+app.get('/new',function(req,res) {
+  res.sendFile(__dirname + '/add.html')
+})
+
+app.post('/adder', function(req,res) {
+  console.log(req.body);
+  console.log(req.body['first']);
+})
+
 app.get('/users/:id', function(req, res) {
   const query = "SELECT * from users where id = ?";
   console.log(req.params.id);
