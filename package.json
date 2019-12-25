@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/HyeeunMok/nodedb#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "md5": "^2.2.1",
+    "sqlite3": "^4.1.1"
   }
 }
