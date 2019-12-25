@@ -16,7 +16,14 @@ app.get('/new',function(req,res) {
 
 app.post('/adder', function(req,res) {
   console.log(req.body);
-  console.log(req.body['first']);
+  // console.log(req.body['first']);
+  let sql = 'INSERT INTO users(first,last,email,password) VALUES (?,?,?,?)';
+  db.run(sql,[req.body['first'],req.body['last'],req.body['email'],req.body['password']],function(err,row) {
+    if(err) {
+      throw err;
+    }
+    res.json({'id':this.lastID});
+  })
 })
 
 app.get('/users/:id', function(req, res) {
@@ -46,6 +53,6 @@ app.get('/users', function (req, res) {
 })
 
 app.get('/',function(req, res) {
-  res.json({'staus': 'ready'})
+  res.json({'status': 'ready'})
 })
 
